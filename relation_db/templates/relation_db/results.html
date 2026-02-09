@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты регистраций</title>
+</head>
+<body>
+    <h1>Результаты регистраций</h1>
+
+    {% for reg in registrations %}
+        <hr>
+        <h2>{{ reg.person.full_name }} — {{ reg.tour.title }}</h2>
+
+        <p><b>Категории:</b>
+            {% for cat in reg.person.categories.all %}
+                {{ cat.name }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+
+        <h3>Отзывы:</h3>
+        <ul>
+            {% for review in reg.reviews.all %}
+                <li>{{ review.text }} ({{ review.rating }}/5)</li>
+            {% empty %}
+                <li>Отзывов пока нет</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>

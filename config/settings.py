@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     'main',
     'book',
+    'relation_db',
 ]
 
 MIDDLEWARE = [
